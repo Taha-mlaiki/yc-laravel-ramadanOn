@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string("username");
             $table->string("email");
             $table->foreignId("post_id")->nullable()->constrained()->onDelete("cascade");
-            $table->foreignId("recipe_id")->nullable()->constrained()->onDelete("cascade");
             $table->text("comment");
             $table->timestamps();
         });
