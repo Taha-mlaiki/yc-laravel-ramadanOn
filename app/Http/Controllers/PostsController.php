@@ -26,4 +26,10 @@ class PostsController extends Controller
         Post::create($req->all());
         return redirect()->route('posts.all')->with('success', 'Post created successfully!');
     }
+
+    public function details($postId)
+    {
+        $post = Post::with('comments')->findOrFail($postId);
+        return view('posts.details', compact('post'));
+    }
 }
