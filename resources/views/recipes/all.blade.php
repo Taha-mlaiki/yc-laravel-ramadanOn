@@ -29,9 +29,6 @@
         @if (session('success'))
             <p class="bg-green-100 text-green-700 my-10 p-2 rounded">{{ session('success') }}</p>
         @endif
-        @if (session('error'))
-            <p class="bg-red-100 text-red-700 p-2 rounded">{{ session('error') }}</p>
-        @endif
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Recipe Cards -->

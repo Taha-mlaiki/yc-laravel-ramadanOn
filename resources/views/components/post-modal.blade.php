@@ -17,7 +17,7 @@
         </div>
 
         <!-- Modal Body -->
-        <form id="recipeForm" class="px-6 py-4 space-y-4" method="POST" action="/recipes">
+        <form id="recipeForm" class="px-6 py-4 space-y-4" method="POST" action="/posts">
             @csrf
             <!-- Username Input -->
             <div>
