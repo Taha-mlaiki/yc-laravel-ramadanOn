@@ -19,7 +19,9 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-indigo-900 mb-2">{{ $post->title }}</h3>
                         <p class="text-gray-600 mb-4">{{ \Illuminate\Support\Str::limit($post->content, 50) }}</p>
-                        <button class="text-yellow-500 hover:text-yellow-600 font-semibold">Read Post →</button>
+                        <a href='/posts/{{ $post->id }}'>
+                            <button class="text-yellow-500 hover:text-yellow-600 font-semibold">Read Post →</button>
+                        </a>
                     </div>
                 </div>
             @endforeach

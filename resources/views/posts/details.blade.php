@@ -17,12 +17,16 @@
                 {{ $post->content }}
             </p>
         </div>
+        @if (session('success'))
+            <p class="bg-green-100 text-green-700 my-10 p-2 rounded">{{ session('success') }}</p>
+        @endif
         <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
             <div class="max-w-2xl px-4">
                 <div class="flex justify-between items-center mb-6">
                 </div>
-                <form class="mb-6 flex flex-col gap-2" method="POST" action="/comments">
-                      <input type="hidden" value={{ $post->id }} name="blogId"/>
+                <form class="mb-6 flex flex-col gap-2" method="POST" action={{ route('comment.create') }}>
+                    @csrf
+                    <input type="hidden" value={{ $post->id }} name="post_id" />
                     <div>
                         <label for="username" class="block text-sm font-medium text-gray-700 mb-1">
                             Username
@@ -42,8 +46,8 @@
                     </div>
                     <div
                         class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                        <label for="comment" >Your comment</label>
-                        <textarea id="comment" rows="6"
+                        <label for="comment">Your comment</label>
+                        <textarea id="comment" name="comment" rows="6"
                             class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                             placeholder="Write a comment..."></textarea>
                     </div>
@@ -53,18 +57,19 @@
                     </button>
                 </form>
                 @foreach ($post->comments as $comment)
-                <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
-                    <footer class="flex justify-between items-center mb-2">
-                        <div class="flex items-center">
-                            <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                                <img class="mr-2 w-6 h-6 rounded-full"
-                                    src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                    alt="Michael Gough">{{ $comment->username }}
-                            </p>
-                        </div>
-                    </footer>
-                    <p class="text-gray-500 dark:text-gray-400">{{ $comment->comment }}</p>
-                </article>
+                    <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+                        <footer class="flex justify-between items-center mb-2">
+                            <div class="flex items-center">
+                                <p
+                                    class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                                    <img class="mr-2 w-6 h-6 rounded-full"
+                                        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                                        alt="Michael Gough">{{ $comment->username }}
+                                </p>
+                            </div>
+                        </footer>
+                        <p class="text-gray-500 dark:text-gray-400">{{ $comment->comment }}</p>
+                    </article>
                 @endforeach
             </div>
         </section>

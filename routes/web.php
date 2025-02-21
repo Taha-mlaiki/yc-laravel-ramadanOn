@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Models\Post;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,9 @@ Route::get('/', function () {
 
 require_once __DIR__ . "/recipes.php";
 require_once __DIR__ . "/posts.php";
+
+
+Route::post("/comments",[CommentController::class,"create"])->name("comment.create");
 
 
 
