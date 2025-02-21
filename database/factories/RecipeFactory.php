@@ -24,7 +24,7 @@ class RecipeFactory extends Factory
             "title" => $this->faker->sentence(),
             "category_id" => Category::pluck("id")->random(),
             "description" => $this->faker->sentence(20),
-            "body" => $this->faker->text(),
+            "body" => $this->faker->paragraph(300),
         ];
     }
 }

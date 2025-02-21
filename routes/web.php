@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $posts = Post::limit(3)->get();
     $recipies = Recipe::limit(3)->get();
-    return view('welcome',compact('posts','recipies'));
+    $postsCount = Post::count();
+    $recipiesCount = Post::count();
+    return view('welcome',compact('posts','recipies','recipiesCount','postsCount'));
 });
 
 require_once __DIR__ . "/recipes.php";

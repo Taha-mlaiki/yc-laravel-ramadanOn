@@ -39,4 +39,10 @@ class RecipesController extends Controller
 
         return redirect()->route('recipes.all')->with('success', 'Recipe created successfully!');
     }
+
+    public function details($postId)
+    {
+        $recipe = Recipe::findOrFail($postId);
+        return view('recipes.details', compact('recipe'));
+    }
 }

@@ -21,7 +21,7 @@ class PostFactory extends Factory
             "username" => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             "title" => $this->faker->sentence(),
-            "content" => $this->faker->paragraph(),
+            "content" => $this->faker->paragraph(300),
         ];
     }
 }
