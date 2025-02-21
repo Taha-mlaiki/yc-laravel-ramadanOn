@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class PostFactory extends Factory
         return [
             "username" => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            "title" => $this->faker->sentence() ,
+            "title" => $this->faker->sentence(),
             "content" => $this->faker->paragraph(),
         ];
     }
