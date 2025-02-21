@@ -3,6 +3,9 @@
 @section("content")
     <x-navbar />
     <div class="container mx-auto mb-10">
+        <div class="flex items-center justify-end my-10">
+            <x-post-modal />
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Experience Cards -->
             @foreach ($posts as $post )
