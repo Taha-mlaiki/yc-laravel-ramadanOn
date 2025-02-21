@@ -18,10 +18,10 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            "username" => $this->faker->name(),
-            "email" => $this->faker->unique()->email(),
-            "post_id" => Post::inRandomOrder()->first()->id,
-            "comment" => $this->faker->sentence()
+            'username' => $this->faker->userName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'post_id' => Post::pluck("id")->random(),
+            'comment' => $this->faker->paragraph(),
         ];
     }
 }

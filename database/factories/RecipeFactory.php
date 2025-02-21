@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class RecipeFactory extends Factory
             "username" => $this->faker->name(),
             "email" => $this->faker->unique()->email(),
             "title" => $this->faker->sentence(),
-            "category_id" => Category::query()->inRandomOrder()->value("id") ?? Category::factory()->create()->id,
+            "category_id" => Category::pluck("id")->random(),
             "description" => $this->faker->sentence(20),
             "body" => $this->faker->text(),
         ];
